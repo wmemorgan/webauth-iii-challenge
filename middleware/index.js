@@ -1,11 +1,11 @@
 /** Global Middlware **/
+const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 // Import data models
 const db = require('../data/models')
 
 const inputDataChecker = (arr, target) => target.every(v => arr.includes(v))
-const requiredFields = ['username', 'password']
 
 //===== Data Validation ====//
 const requiredData = (dataChecker, dataFields) => {
@@ -39,11 +39,10 @@ const validateData = (table, data, field) => {
 
 //==== Authentication ====//
 const userAuthorization = async (req, res, next) => {
-  let { username, password } = req.body
   const token = req.headers.authorization
-  let user = await db.findByField('Users', 'username', username)
-  if (token && bcrypt.compareSync(password, user.password)) {
-    jwt.verifiy(token, process.env.JWT_SECRET, (err, payload) => {
+
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
       if (err) {
         res.status(403).json({ message: `You are not authorized` })
       } else {

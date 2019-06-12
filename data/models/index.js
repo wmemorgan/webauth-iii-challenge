@@ -5,7 +5,7 @@ const db = require('../dbConfig')
 async function getUsers() {
   try {
     let data = await db('Users')
-      .select('id', 'username')
+      .select('id', 'username', 'department')
       .orderBy('id')
     return data
   }
@@ -43,6 +43,18 @@ async function findByUser(username, table) {
       .where({ username })
       .first()
     return data
+  }
+  catch (err) {
+    return err
+  }
+}
+
+async function findByField(table, field, data) {
+  try {
+    let query = await db(table)
+      .where(`${field}`, data)
+      .first()
+    return query
   }
   catch (err) {
     return err
@@ -95,6 +107,7 @@ module.exports = {
   find,
   findById,
   findByUser,
+  findByField,
   insert,
   update,
   remove,

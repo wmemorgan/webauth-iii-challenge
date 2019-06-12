@@ -6,11 +6,13 @@
   "author": "Wilfred Morgan <wil.me.morgan@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "both": "^0.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "helmet": "^3.18.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.17.5",
     "morgan": "^1.9.1"
   },

@@ -6,9 +6,13 @@ const jwt = require('jsonwebtoken')
 const db = require('../data/models')
 
 // Import middleware
+const { inputDataChecker, requiredData, validateData, userAuthorization } = require('../middleware')
+
+const userData = ['username', 'password']
 
 //==== Register ====//
-router.post('/register', async (req, res) => {
+const registrationData = [...userData, 'department']
+router.post('/register', requiredData(inputDataChecker, registrationData), async (req, res) => {
   let user = req.body
   const hash = bcrypt.hashSync(user.password, 14)
   user.password = hash
@@ -26,7 +30,7 @@ router.post('/register', async (req, res) => {
 })
 
 //==== Login ====//
-router.post('/login', async (req, res) => {
+router.post('/login', requiredData(inputDataChecker, userData), async (req, res) => {
   let { username, password } = req.body
   try {
     let user = await db.findByUser(username, 'Users')
@@ -50,7 +54,7 @@ router.post('/login', async (req, res) => {
 //==== Custom Middleware ====//
 function generateToken(user) {
   return jwt.sign({
-    userName: user.username,
+    username: user.username,
     department: user.department
   }, process.env.JWT_SECRET, {
     subject: `${user.id}`,

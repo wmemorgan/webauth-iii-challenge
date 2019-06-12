@@ -4,10 +4,11 @@ const router = require('express').Router()
 const db = require('../data/models')
 
 // Middleware
+const { inputDataChecker, requiredData, validateData, userAuthorization } = require('../middleware')
 
 // User Resource Routes
 //==== GET ====//
-router.get('/', async (req, res) => {
+router.get('/', userAuthorization, async (req, res) => {
   try {
     let data = await db.getUsers()
     res.send(data)

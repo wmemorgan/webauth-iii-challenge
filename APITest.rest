@@ -1,6 +1,9 @@
 ### GET (Basic)
 http://localhost:5000
 
+### Get Users
+http://localhost:5000/api/users
+
 ### GET Users (Protected Route)
 GET http://localhost:5000/api/users HTTP/1.1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJSb2xlIjoic3R1ZGVudCIsImlhdCI6MTU2MDMxODk3MywiZXhwIjoxNTYwMzIyNTczfQ.3yMQ2b7slCESiIITqqm6na5gHEPwCid2ZqJqZ8QzaQc

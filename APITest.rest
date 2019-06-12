@@ -6,7 +6,7 @@ http://localhost:5000/api/users
 
 ### GET Users (Protected Route)
 GET http://localhost:5000/api/users HTTP/1.1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJSb2xlIjoic3R1ZGVudCIsImlhdCI6MTU2MDMxODk3MywiZXhwIjoxNTYwMzIyNTczfQ.3yMQ2b7slCESiIITqqm6na5gHEPwCid2ZqJqZ8QzaQc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkdyZWciLCJkZXBhcnRtZW50IjoiTXVzaWMiLCJpYXQiOjE1NjAzMjk1MjgsImV4cCI6MTU2MDMzNjcyOCwic3ViIjoiNiJ9.tNoE6xg_8pA7QVKmp5_jYyuTuZgkxeCzZieaoV0pSUI
 
 ### GET Users (by ID)
 http://localhost:5000/api/users/1
@@ -16,9 +16,9 @@ POST http://localhost:5000/api/auth/register HTTP/1.1
 content-type: application/json
 
 {
-  "username": "Carol",
-  "password": "pass",
-  "department": "History"
+  "username": "Greg",
+  "password": "pass123",
+  "department": "Music"
 }
 
 ### (Login) POST 
@@ -26,8 +26,8 @@ POST http://localhost:5000/api/auth/login HTTP/1.1
 content-type: application/json
 
 {
-  "username": "Mike",
-  "password": "pass2"
+  "username": "Greg",
+  "password": "pass123"
 }
 
 ### (Logout) GET 

@@ -1,0 +1,20 @@
+{
+  "name": "webauth-iii-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/wmemorgan/webauth-iii-challenge",
+  "author": "Wilfred Morgan <wil.me.morgan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "both": "^0.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "knex": "^0.17.5",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

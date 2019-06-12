@@ -16,8 +16,9 @@ POST http://localhost:5000/api/auth/register HTTP/1.1
 content-type: application/json
 
 {
-  "username": "Mike",
-  "password": "pass"
+  "username": "Carol",
+  "password": "pass",
+  "department": "History"
 }
 
 ### (Login) POST 
@@ -26,7 +27,7 @@ content-type: application/json
 
 {
   "username": "Mike",
-  "password": "pass"
+  "password": "pass2"
 }
 
 ### (Logout) GET 

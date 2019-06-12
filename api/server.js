@@ -4,6 +4,7 @@ const cors = require('cors')
 const logger = require('morgan')
 
 // Import routes
+const authRoutes = require('../routes/authRoutes')
 const usersRoutes = require('../routes/usersRoutes')
 
 // Instantiate server
@@ -16,6 +17,7 @@ server.use(express.json())
 server.use(logger('dev'))
 
 // Activate routes
+server.use('/api/auth', authRoutes)
 server.use('/api/users', usersRoutes)
 server.use('/', (req, res) => {
   res.send(`<h1>WebAuth III Challenge API server</h1>`)

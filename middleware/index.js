@@ -20,10 +20,10 @@ const requiredData = (dataChecker, dataFields) => {
   }
 }
 
-const validateData = (table, data, field) => {
+const validateData = (table) => {
   return async (req, res, next) => {
     try {
-      let results = await db.findByField(table, field, data)
+      let results = await db.findById(req.params.id, table)
       if (results) {
         req.data = results
         next()

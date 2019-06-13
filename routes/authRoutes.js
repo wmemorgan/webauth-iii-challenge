@@ -21,7 +21,7 @@ router.post('/register', requiredData(inputDataChecker, registrationData), async
     let token = generateToken(newUser)
     res.status(201).json({
       message: `Welcome ${newUser.username}`,
-      authToken: token
+      token
     })
   }
   catch (err) {
@@ -38,7 +38,7 @@ router.post('/login', requiredData(inputDataChecker, userData), async (req, res)
       let token = generateToken(user)
       res.json({
         message: `Welcome ${user.username}`,
-        authToken: token
+        token
       })
     } else {
       res.status(401).json({ message: `You shall not pass!` })

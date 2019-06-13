@@ -28,6 +28,7 @@ async function find(table) {
 async function findById(id, table) {
   try {
     let data = await db(table)
+      .select('id', 'username', 'department')
       .where({ id: Number(id) })
       .first()
     return data
@@ -40,6 +41,7 @@ async function findById(id, table) {
 async function findByUser(username, table) {
   try {
     let data = await db(table)
+      .select('id', 'username', 'department')
       .where({ username })
       .first()
     return data
@@ -77,7 +79,8 @@ async function update(id, data, table) {
     let updateCount = await db(table)
       .where({ id }).update(data)
     if (updateCount > 0) {
-      let updatedRecord = await findById(id)
+      let updatedRecord = await findById(id, table)
+      console.log(`update db method invoked updatedRecord: `, updatedRecord)
       return updatedRecord
     } else throw err
   }

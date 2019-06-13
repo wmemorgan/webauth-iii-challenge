@@ -3,6 +3,9 @@ const helmet = require('helmet')
 const cors = require('cors')
 const logger = require('morgan')
 
+// Import middleware
+const { userAuthorization } = require('../middleware')
+
 // Import routes
 const authRoutes = require('../routes/authRoutes')
 const usersRoutes = require('../routes/usersRoutes')
@@ -18,7 +21,7 @@ server.use(logger('dev'))
 
 // Activate routes
 server.use('/api/auth', authRoutes)
-server.use('/api/users', usersRoutes)
+server.use('/api/users', userAuthorization, usersRoutes)
 server.use('/', (req, res) => {
   res.send(`<h1>WebAuth III Challenge API server</h1>`)
 })

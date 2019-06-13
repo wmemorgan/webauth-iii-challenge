@@ -41,7 +41,6 @@ async function findById(id, table) {
 async function findByUser(username, table) {
   try {
     let data = await db(table)
-      .select('id', 'username', 'department')
       .where({ username })
       .first()
     return data

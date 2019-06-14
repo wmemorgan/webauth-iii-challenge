@@ -1,5 +1,4 @@
-// Update with your config settings.
-
+require('dotenv').config()
 module.exports = {
   development: {
     client: 'sqlite3',
@@ -21,17 +20,15 @@ module.exports = {
     useNullAsDefault: true,
     connection: {
       connectionString: process.env.STAGING_DATABASE_URL,
-    },
-    pool: {
-      min: 2,
-      max: 10
+      ssl: true
     },
     migrations: {
       directory: './data/migrations'
     },
     seeds: {
       directory: './data/seeds'
-    }
+    },
+    debug: true
   },
 
   production: {

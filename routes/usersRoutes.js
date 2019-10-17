@@ -4,7 +4,7 @@ const router = require('express').Router()
 const db = require('../data/models')
 
 // Middleware
-const { inputDataChecker, requiredData, validateData } = require('../middleware')
+const { inputDataChecker, requiredData, validateData } = require('../middleware/dataValidation')
 
 // Define required fields
 const updateUserData = ['username', 'department']

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 /**
  * Function that handlers user authentication
- * @param {object} authorization token 
+ * @param {object} token 
  * @returns username
  */
 const userAuthorization = async (req, res, next) => {

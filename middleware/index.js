@@ -5,14 +5,19 @@ const jwt = require('jsonwebtoken')
 // Import data models
 const db = require('../data/models')
 
-const inputDataChecker = (arr, target) => target.every(v => arr.includes(v))
 
 //===== Data Validation ====//
-const requiredData = (dataChecker, dataFields) => {
+/**
+ * Higher-order function that enforces required
+ * data is being received
+ * @param {function} fn 
+ * @param {array} dataFields 
+ */
+const requiredData = (fn, dataFields) => {
   return (req, res, next) => {
     if (!req.body || !Object.keys(req.body).length) {
       res.status(400).json({ message: `Missing user data` })
-    } else if (!dataChecker(Object.keys(req.body), dataFields)) {
+    } else if (!fn(Object.keys(req.body), dataFields)) {
       res.status(400).json({ message: `Missing required field.` })
     } else {
       next()
@@ -20,6 +25,12 @@ const requiredData = (dataChecker, dataFields) => {
   }
 }
 
+/**
+ * Function which validates data
+ * record exists
+ * @param {string} table
+ * @returns database record 
+ */
 const validateData = (table) => {
   return async (req, res, next) => {
     try {
@@ -37,7 +48,19 @@ const validateData = (table) => {
   }
 }
 
+/**
+ * Helper function that confirms all required data is received
+ * @param {array} arr 
+ * @param {array} target 
+ */
+const inputDataChecker = (arr, target) => target.every(v => arr.includes(v)) 
+
 //==== Authentication ====//
+/**
+ * Function that handlers user authentication
+ * @param {object} authorization token 
+ * @returns username
+ */
 const userAuthorization = async (req, res, next) => {
   const token = req.headers.authorization
 

@@ -28,7 +28,7 @@ const requiredData = (fn, dataFields) => {
 const validateData = (table) => {
   return async (req, res, next) => {
     try {
-      let results = await db.findById(req.params.id, table)
+      let results = await db.findById(table, req.params.id)
       if (results) {
         req.data = results
         next()

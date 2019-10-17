@@ -23,7 +23,7 @@ server.use(logger("dev"));
 server.use("/api/auth", authRoutes);
 server.use("/api/users", userAuthorization, usersRoutes);
 server.use("/api", (req, res) => {
-	res.send({ apiStatus: up });
+	res.send({ api_status: "up" });
 });
 server.use("/", (req, res) => {
 	res.send(`<h1>WebAuth III Challenge API server</h1>`);

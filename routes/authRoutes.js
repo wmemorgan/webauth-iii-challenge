@@ -5,7 +5,8 @@ const bcrypt = require('bcryptjs')
 const db = require('../data/models')
 
 // Import middleware
-const { inputDataChecker, requiredData, generateToken } = require('../middleware')
+const { inputDataChecker, requiredData } = require('../middleware/dataValidation')
+const { generateToken } = require('../middleware/auth')
 
 // Declare required fields
 const userData = ['username', 'password']
